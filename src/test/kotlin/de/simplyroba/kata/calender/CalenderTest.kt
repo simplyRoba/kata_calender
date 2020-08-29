@@ -20,4 +20,10 @@ internal class CalenderTest {
         val month: Month = Calender.getMonth(3, 2018)
         assertThat(month.name).isEqualTo(Calender.Months.MARCH)
     }
+
+    @Test
+    internal fun `should return correct number of days in month`() {
+        val month: Month = Calender.getMonth(6, 2013)
+        assertThat(month.daysCount).isEqualTo(31)
+    }
 }
