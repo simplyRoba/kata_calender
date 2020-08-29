@@ -5,6 +5,6 @@ package de.simplyroba.kata.calender
  */
 object Calender {
     fun getMonth(month: Int, year: Int): Month {
-        TODO("Not yet implemented")
+        return Month(year)
     }
 }
