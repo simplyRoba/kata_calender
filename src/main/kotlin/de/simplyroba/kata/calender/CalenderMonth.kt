@@ -28,7 +28,8 @@ class CalenderMonth(
         val k = year % 100
         val j = year / 100
         val h = (q + 13 * (m + 1) / 5 + k + k / 4 + j / 4 + 5 * j) % 7
-        return Day.byOrdinal(h)
+        val d = ((h+5)%7) + 1
+        return Day.byIndex(d)
     }
 
     val daysCount: Int

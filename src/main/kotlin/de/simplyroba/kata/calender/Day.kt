@@ -7,17 +7,20 @@ enum class Day(
     val printName: String,
     val shortName: String
 ) {
-    SATURDAY("Saturday", "Sa"),
-    SUNDAY("Sunday", "Su"),
     MONDAY("Monday", "Mo"),
     TUESDAY("Tuesday", "Tu"),
     WEDNESDAY("Wednesday", "We"),
     THURSDAY("Thursday", "Th"),
-    FRIDAY("Friday", "Fr");
+    FRIDAY("Friday", "Fr"),
+    SATURDAY("Saturday", "Sa"),
+    SUNDAY("Sunday", "Su");
+
+    val index: Int
+        get() = ordinal.plus(1)
 
     companion object {
-        fun byOrdinal(ordinal: Int): Day {
-            return values().first() { it.ordinal == ordinal}
+        fun byIndex(index: Int): Day {
+            return values().first() { it.ordinal == index.minus(1)}
         }
     }
 }
