@@ -2,7 +2,6 @@ package de.simplyroba.kata.calender
 
 import de.simplyroba.kata.calender.Month.FEBRUARY
 import de.simplyroba.kata.calender.Month.JANUARY
-import kotlinx.collections.immutable.toImmutableMap
 import kotlinx.collections.immutable.toPersistentMap
 
 /**
