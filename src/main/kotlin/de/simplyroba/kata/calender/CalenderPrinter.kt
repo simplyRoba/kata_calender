@@ -1,24 +1,30 @@
 package de.simplyroba.kata.calender
 
-import kotlinx.collections.immutable.PersistentMap
+import de.simplyroba.kata.calender.Weekday.SUNDAY
 
 /**
  * @author simplyroba
  */
 object CalenderPrinter {
 
-    fun printMonth(monthToPrint: CalenderMonth) {
+    private const val LINE_LENGTH: Int = 20
+
+    fun printMonth(monthToPrint: CalenderMonth, startDay: Weekday = SUNDAY) {
         printTitle(monthToPrint)
-        printWeekDayLine()
+        printWeekDayLine(startDay)
         printDays(monthToPrint.days)
     }
 
     private fun printTitle(monthToPrint: CalenderMonth) {
-        println("   ${monthToPrint.month.printName} ${monthToPrint.year}")
+        println("%${LINE_LENGTH}s".format("${monthToPrint.month.printName} ${monthToPrint.year}"))
     }
 
-    private fun printWeekDayLine() {
-        println("Su Mo Tu We Th Fr Sa")
+    private fun printWeekDayLine(startDay: Weekday) {
+        for (x in 0..6) {
+            val shiftedIndex = (x.plus(startDay.ordinal) % 7).plus(1)
+            print("%2s ".format(Weekday.byIndex(shiftedIndex).shortName))
+        }
+        println()
     }
 
     private fun printDays(days: CalenderDays) {
@@ -30,9 +36,9 @@ object CalenderPrinter {
         var counter = firstDay.index
         for (day in days) {
             if (counter%7 == 0) {
-                println(String.format("%2d", day.key))
+                println("%2d".format(day.key))
             } else {
-                print(String.format("%2d ", day.key))
+                print("%2d ".format(day.key))
             }
             counter++
         }

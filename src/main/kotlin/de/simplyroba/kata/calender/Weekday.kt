@@ -24,3 +24,7 @@ enum class Weekday(
         }
     }
 }
+
+fun String.toWeekday(): Weekday {
+    return Weekday.valueOf(this.toUpperCase())
+}
