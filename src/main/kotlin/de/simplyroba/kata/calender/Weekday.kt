@@ -3,7 +3,7 @@ package de.simplyroba.kata.calender
 /**
  * @author simplyroba
  */
-enum class Day(
+enum class Weekday(
     val printName: String,
     val shortName: String
 ) {
@@ -19,7 +19,7 @@ enum class Day(
         get() = ordinal.plus(1)
 
     companion object {
-        fun byIndex(index: Int): Day {
+        fun byIndex(index: Int): Weekday {
             return values().first() { it.ordinal == index.minus(1)}
         }
     }

@@ -4,7 +4,9 @@ package de.simplyroba.kata.calender
  * @author simplyroba
  */
 
-enum class Month (val printName: String){
+enum class Month (
+    val printName: String
+){
     JANUARY("January"),
     FEBRUARY("February"),
     MARCH("March"),
