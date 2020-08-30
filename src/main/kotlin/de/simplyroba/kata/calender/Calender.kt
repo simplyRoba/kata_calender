@@ -22,11 +22,13 @@ object Calender {
         return when (month) {
             Month.APRIL, Month.JUNE, Month.SEPTEMBER, Month.NOVEMBER -> 30
             FEBRUARY -> {
-                if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) 29 else 28
+                if (isLeapYear(year)) 29 else 28
             }
             else -> 31
         }
     }
+
+    private fun isLeapYear(year: Int) = year % 4 == 0 && year % 100 != 0 || year % 400 == 0
 
     private fun weekdayOf(dayInMonth: Int, month: Month, year: Int): Weekday {
         var monthInternal: Int = month.index
@@ -47,7 +49,8 @@ object Calender {
         val k = yearInternal % 100
         val j = yearInternal / 100
         val h = (q + 13 * (m + 1) / 5 + k + k / 4 + j / 4 + 5 * j) % 7
-        val d = ((h+5)%7) + 1
+
+        val d = ((h+6)%7) + 1 // start with sunday
         return Weekday.byIndex(d)
     }
 }
