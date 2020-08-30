@@ -32,6 +32,7 @@
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <junit.version>5.6.2</junit.version>
         <truth.version>1.0.1</truth.version>
+        <kotlin-argparser.version>2.0.7</kotlin-argparser.version>
     </properties>
 
     <dependencies>
@@ -44,6 +45,11 @@
             <groupId>org.jetbrains.kotlinx</groupId>
             <artifactId>kotlinx-collections-immutable-jvm</artifactId>
             <version>${kotlinx-collections-immutable.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.xenomachina</groupId>
+            <artifactId>kotlin-argparser</artifactId>
+            <version>${kotlin-argparser.version}</version>
         </dependency>
 
         <dependency>

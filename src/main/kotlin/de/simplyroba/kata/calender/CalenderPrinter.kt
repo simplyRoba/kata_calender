@@ -13,6 +13,7 @@ object CalenderPrinter {
         printTitle(monthToPrint)
         printWeekDayLine(startWeekday)
         printDays(startWeekday, monthToPrint.days)
+        repeat(3) { println() }
     }
 
     private fun printTitle(monthToPrint: CalenderMonth) {
