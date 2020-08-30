@@ -47,7 +47,8 @@ object Calender {
         val k = yearInternal % 100
         val j = yearInternal / 100
         val h = (q + 13 * (m + 1) / 5 + k + k / 4 + j / 4 + 5 * j) % 7
-        val d = ((h+5)%7) + 1
+
+        val d = ((h+6)%7) + 1
         return Weekday.byIndex(d)
     }
 }

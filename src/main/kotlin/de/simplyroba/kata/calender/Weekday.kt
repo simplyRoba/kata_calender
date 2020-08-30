@@ -7,13 +7,13 @@ enum class Weekday(
     val printName: String,
     val shortName: String
 ) {
+    SUNDAY("Sunday", "Su"),
     MONDAY("Monday", "Mo"),
     TUESDAY("Tuesday", "Tu"),
     WEDNESDAY("Wednesday", "We"),
     THURSDAY("Thursday", "Th"),
     FRIDAY("Friday", "Fr"),
-    SATURDAY("Saturday", "Sa"),
-    SUNDAY("Sunday", "Su");
+    SATURDAY("Saturday", "Sa");
 
     val index: Int
         get() = ordinal.plus(1)
