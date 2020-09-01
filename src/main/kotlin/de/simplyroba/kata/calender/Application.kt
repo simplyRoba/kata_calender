@@ -18,13 +18,13 @@ fun main(args: Array<String>) = mainBody {
                     val month = readLine()?.toInt()
                     println("Year as 4 digits number: ")
                     val year = readLine()?.toInt()
-                    CalenderPrinter.printMonth(Calender.getMonth(month!!, year!!))
+                    Calender.getMonth(month!!, year!!).buildOutput().print()
                 } catch (ex: Exception) {
                     println("retry..")
                 }
             }
         } else {
-            CalenderPrinter.printMonth(Calender.getMonth(month, year), weekStart)
+            Calender.getMonth(month, year).buildOutput(weekStart).print()
         }
     }
 }

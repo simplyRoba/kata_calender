@@ -1,7 +1,6 @@
 package de.simplyroba.kata.calender
 
-import de.simplyroba.kata.calender.Month.FEBRUARY
-import de.simplyroba.kata.calender.Month.JANUARY
+import de.simplyroba.kata.calender.Month.*
 import kotlinx.collections.immutable.toPersistentMap
 
 /**
@@ -11,19 +10,17 @@ object Calender {
 
     fun getMonth(monthIndex: Int, year: Int): CalenderMonth {
         val month = Month.byIndex(monthIndex)
-        val daysCount: Int = daysCount(month, year)
+        val daysInMonth: Int = daysInMonth(month, year)
         val days = HashMap<Int, Weekday> ()
-        (1..daysCount).forEach { day -> days[day] = weekdayOf(day, month, year) }
+        (1..daysInMonth).forEach { day -> days[day] = weekdayOf(day, month, year) }
 
         return CalenderMonth(month, year, days.toPersistentMap())
     }
 
-    private fun daysCount(month: Month, year: Int): Int {
+    private fun daysInMonth(month: Month, year: Int): Int {
         return when (month) {
-            Month.APRIL, Month.JUNE, Month.SEPTEMBER, Month.NOVEMBER -> 30
-            FEBRUARY -> {
-                if (isLeapYear(year)) 29 else 28
-            }
+            FEBRUARY -> if (isLeapYear(year)) 29 else 28
+            APRIL, JUNE, SEPTEMBER, NOVEMBER -> 30
             else -> 31
         }
     }
@@ -48,7 +45,7 @@ object Calender {
         val m: Int = monthInternal
         val k = yearInternal % 100
         val j = yearInternal / 100
-        val h = (q + 13 * (m + 1) / 5 + k + k / 4 + j / 4 + 5 * j) % 7
+        val h = (q + ((13 * (m + 1)) / 5) + k + (k / 4) + (j / 4) + (5 * j)) % 7
 
         val d = ((h+6)%7) + 1 // start with sunday
         return Weekday.byIndex(d)
