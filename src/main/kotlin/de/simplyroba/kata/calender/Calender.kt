@@ -1,6 +1,8 @@
 package de.simplyroba.kata.calender
 
 import de.simplyroba.kata.calender.Month.*
+import de.simplyroba.kata.calender.Weekday.SATURDAY
+import de.simplyroba.kata.calender.Weekday.SUNDAY
 import kotlinx.collections.immutable.toPersistentMap
 
 /**
@@ -41,13 +43,19 @@ object Calender {
             yearInternal = yearInternal.minus(1)
         }
 
+        // q is the day of the month
+        // m is the month (3 = March, 4 = April, 5 = May, ..., 14 = February)
+        // k the year of the century (year mod 100).
+        // j is the zero-based century. For example, the zero-based centuries for 1995 and 2000 are 19 and 20 respectively.
+        // h is the day of the week (0 = Saturday, 1 = Sunday, 2 = Monday, ..., 6 = Friday)
         val q: Int = dayInMonth
         val m: Int = monthInternal
         val k = yearInternal % 100
         val j = yearInternal / 100
         val h = (q + ((13 * (m + 1)) / 5) + k + (k / 4) + (j / 4) + (5 * j)) % 7
 
-        val d = ((h+6)%7) + 1 // start with sunday
-        return Weekday.byIndex(d)
+        // shift by ordinal of saturday as this is 0 in h to adapt to order of weekday enum
+        val d = ((h+SATURDAY.ordinal) % 7)
+        return Weekday.byIndex(d+1) // plus 1 because index starts with 1
     }
 }
